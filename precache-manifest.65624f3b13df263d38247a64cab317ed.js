@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "62f8e7a69964d1ab42f9820d59d2609a",
+    "revision": "17be54c9d48628423040a321c8373b20",
     "url": "/cipher/index.html"
   },
   {

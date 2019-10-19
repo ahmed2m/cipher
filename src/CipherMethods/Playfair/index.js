@@ -43,7 +43,7 @@ function Playfair(props) {
         <span style={{margin:10}}>with</span>
         <Select onChange={(e)=>setChangeWith(e)} style={{ width: 50 }} dropdownMatchSelectWidth={false} defaultValue={"I"}>
           {props.alphabet.split('').map((char)=>{
-            return(<Option key={char} value={char}>{char}</Option>);
+            return(<Option key={char} value={char}>{char}</Option>)
           })}
         </Select>
       </div>

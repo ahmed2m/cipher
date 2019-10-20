@@ -5,7 +5,7 @@ const { Paragraph } = Typography;
 const { Option } = Select;
 
 function Playfair(props) {
-  const [key,setKey] = useState(props.alphabet);
+  const [key,setKey] = useState("");
   const [cipher,setCipher] = useState("");
   const [deCipher,setDeCipher] = useState("");
   const [deCipherText,setDeCipherText] = useState("");
@@ -16,10 +16,10 @@ function Playfair(props) {
     <div className="main">
       <h4>Playfair Things</h4>
       <Input
-        // onChange={e => handleKeyChange(e)}
+        onChange={e => setKey(e.target.value)}
         style={{ width: 360 }}
         addonBefore="Your Key"
-        // value={key}
+        value={key}
       />
       <Button
         type="dashed"
@@ -58,7 +58,7 @@ function Playfair(props) {
         onChange={e =>{setDeCipherText(e.target.value)}}
         style={{ width: 360 }}
         addonBefore="Your Encrypted Text"
-        // value={deCipherText}
+        value={deCipherText}
       />
       <Paragraph copyable>{deCipher}</Paragraph>
     </div>

@@ -4,13 +4,13 @@
   "private": true,
   "homepage": "https://ahmeed2m.github.io/cipher",
   "dependencies": {
-    "antd": "^3.24.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "antd": "^3.26.18",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-scripts": "3.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=1111 react-scripts start",
     "build": "react-scripts build",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
@@ -33,6 +33,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1"
+    "gh-pages": "^2.2.0"
   }
 }

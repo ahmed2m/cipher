@@ -5,23 +5,25 @@ import { uniqueString } from "../../Helper";
 const { Paragraph } = Typography;
 const { Option } = Select;
 
-function Playfair(props) {
+function Playfair({ alphabet }) {
   const [key,setKey] = useState("");
-  const [matrix, setMatrix ] = useState(props.alphabet)
   const [cipher,setCipher] = useState("");
   const [deCipher,setDeCipher] = useState("");
   const [deCipherText,setDeCipherText] = useState("");
   const [toChange,setToChange] = useState("J");
   const [changeWith,setChangeWith] = useState("I");
+  const [matrix, setMatrix ] = useState(alphabet.replace("J", "I"));
   
   function handleKeyChange(val){
-    let newKey = uniqueString(val);
+    const newKey = uniqueString(val);
     setKey(newKey);
   }
 
   useEffect(()=>{
-    setMatrix(uniqueString(key+props.alphabet))
-  },[key])
+    const filteredKey = key.toUpperCase().replace(toChange, changeWith);
+    const filteredAlphabet = alphabet.toUpperCase().replace(toChange, changeWith);
+    setMatrix(uniqueString(filteredKey+filteredAlphabet));
+  },[key, toChange, changeWith, alphabet]);
 
   return (
 
@@ -36,13 +38,13 @@ function Playfair(props) {
       <div>
         <span>Substitute: </span>
         <Select onChange={(e)=>setToChange(e)} style={{ width: 50 }} dropdownMatchSelectWidth={false} defaultValue={"J"}>
-          {matrix.split('').map((char)=>{
+          {alphabet.split('').filter(char=>char!==changeWith).map((char)=>{
             return(<Option key={char} value={char}>{char}</Option>);
           })}
         </Select>
         <span style={{margin:10}}>with</span>
         <Select onChange={(e)=>setChangeWith(e)} style={{ width: 50 }} dropdownMatchSelectWidth={false} defaultValue={"I"}>
-          {props.alphabet.split('').map((char)=>{
+          {alphabet.split('').filter(char=>char!==toChange).map((char)=>{
             return(<Option key={char} value={char}>{char}</Option>)
           })}
         </Select>
@@ -50,12 +52,10 @@ function Playfair(props) {
       
       <div className="matrix">
         {matrix.split('').map((char)=>{
-          if(char==changeWith){
-            return <span className="double">{changeWith}/{toChange}</span>;
-          }if(char==toChange){
-            return;
+          if(char===changeWith){
+            return <span key={char} className="double">{changeWith}/{toChange}</span>;
           }
-          return <span>{char}</span>;
+          return <span key={char}>{char}</span>;
         })}
       </div>
 

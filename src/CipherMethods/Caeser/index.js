@@ -16,7 +16,7 @@ function Caeser(props) {
 	function Cipher(plain, key){
 	  key = key?parseInt(key):0;
 	  let newCipher = "";
-	  plain.split('').map((char)=>{
+	  plain.split('').forEach((char)=>{
 		let newChar = String.fromCharCode(((char.charCodeAt(0)-'A'.charCodeAt(0))+key)%26+'A'.charCodeAt(0));
 		newCipher+=newChar;
 	  })
@@ -25,7 +25,7 @@ function Caeser(props) {
 	function DeCipher(plain, key){
 	  key = key?parseInt(key):0;
 	  let newCipher = "";
-	  plain.split('').map((char)=>{
+	  plain.split('').forEach((char)=>{
 		console.log((char.charCodeAt(0)-'A'.charCodeAt(0))-key + " " + char + " "+char.charCodeAt(0));
 		let newChar = String.fromCharCode(((char.charCodeAt(0)-'A'.charCodeAt(0))-key)%26+'A'.charCodeAt(0));
 		newCipher+=newChar;

@@ -1,6 +1,6 @@
 This project was build as an assignment for CS495 Selected Topics-3 (Security).
 It was an opportunity to learn more about React and AntDesign.
-It contains the implemntation of the text cipher algorithm we learn about every week.
+It contains the implementation of the text cipher algorithm we learn about every week.
 So far the application contains (Caeser, Monoalphabetic)
 
 ### Scripts

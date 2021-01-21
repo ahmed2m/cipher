@@ -10,9 +10,6 @@ function App() {
 	const [plainText, setPlainText] = useState("");
 	const [method, setMethod] = useState(Object.keys(encryptionMethods)[0]);
 	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	const handleChange = (e) => {
-		setMethod(e);
-	};
 
 	function render(){
 		const Method = encryptionMethods[method];
@@ -28,7 +25,7 @@ function App() {
 				placeholder="Text"
 			/>
 			
-			<Select style={{ width: 200 }} dropdownMatchSelectWidth={false} onChange={handleChange} defaultValue={Object.keys(encryptionMethods)[0]}>
+			<Select style={{ width: 200 }} dropdownMatchSelectWidth={false} onChange={(e)=>setMethod(e)} defaultValue={Object.keys(encryptionMethods)[0]}>
 				{Object.keys(encryptionMethods).map((cipherMethod)=>{
 					return(<Option key={cipherMethod} value={cipherMethod}>{cipherMethod} </Option>)
 				})}
